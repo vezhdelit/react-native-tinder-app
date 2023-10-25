@@ -5,9 +5,6 @@ const Home = ({ navigation }: any) => {
   return (
     <View className="flex-1 justify-center items-center">
       <Text>Home</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Chat")}>
-        <Text>Chat</Text>
-      </TouchableOpacity>
     </View>
   );
 };
