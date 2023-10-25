@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "133116441410",
+    "project_id": "react-native-tinder-app",
+    "storage_bucket": "react-native-tinder-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133116441410:android:956f87e3b5f8054cf74edb",
+        "android_client_info": {
+          "package_name": "com.vezhdelit.reactnativetinderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133116441410-249nt3ioihr4s1pmbbr2t8ipfi8bu9u4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vezhdelit.reactnativetinderapp",
+            "certificate_hash": "224b3970c40dc533b2a6f1fd2cfe7dc3b1d2eacc"
+          }
+        },
+        {
+          "client_id": "133116441410-s260be32mq55bndlti0u31r7b1ejipa0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vezhdelit.reactnativetinderapp",
+            "certificate_hash": "f5a9d77f29c3056308652b5185ae1f7f9982d2d3"
+          }
+        },
+        {
+          "client_id": "133116441410-a81oke3p07i5pptkmhfil2fftstp7f89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC37PktuGL4NClsqNPkyOd-5Y3uFKcJg7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133116441410-a81oke3p07i5pptkmhfil2fftstp7f89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "133116441410-3f9o56s7pepin9a5asn3je5b5lu67tht.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.exponent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

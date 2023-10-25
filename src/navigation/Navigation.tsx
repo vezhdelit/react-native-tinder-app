@@ -1,62 +1,73 @@
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useColorScheme } from "nativewind";
 
 import { StatusBar } from "react-native";
-
 import Home from "../screens/Home";
 import Login from "../screens/Login";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { FIREBASE_AUTH } from "../../firebaseConfig";
 import SignUp from "../screens/SignUp";
 import Chat from "../screens/Chat";
 
 const Stack = createNativeStackNavigator();
-const SignedInStack = createNativeStackNavigator();
-const SignedOutStack = createNativeStackNavigator();
 
 const SignedInLayout = () => {
   return (
-    <SignedInStack.Navigator initialRouteName="Home">
-      <SignedInStack.Screen
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
         name="Home"
         component={Home}
-        options={{ headerTitleAlign: "center" }}
+        options={{
+          headerShown: false,
+        }}
       />
-      <SignedInStack.Screen
+      <Stack.Screen
         name="Chat"
         component={Chat}
-        options={{ headerTitleAlign: "center" }}
+        options={{
+          headerShown: false,
+        }}
       />
-    </SignedInStack.Navigator>
+    </Stack.Navigator>
   );
 };
 
 const SignedOutLayout = () => {
   return (
-    <SignedOutStack.Navigator initialRouteName="Login">
-      <SignedOutStack.Screen
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
         name="Login"
         component={Login}
-        options={{ headerTitleAlign: "center" }}
+        options={{ headerShown: false }}
       />
-      <SignedOutStack.Screen
+      <Stack.Screen
         name="SignUp"
         component={SignUp}
-        options={{ headerTitleAlign: "center" }}
+        options={{ headerShown: false }}
       />
-    </SignedOutStack.Navigator>
+    </Stack.Navigator>
   );
 };
 
+//root navigation function
 const Navigation = () => {
-  const [user, setUser] = useState<boolean | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const { colorScheme } = useColorScheme();
 
   useEffect(() => {
-    setUser(true);
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      setUser(user);
+    });
   }, []);
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <Stack.Navigator initialRouteName="SignedOutLayout">
+      <StatusBar
+        backgroundColor={`${colorScheme == "dark" ? "#171717" : "white"}`}
+        barStyle={`${colorScheme == "dark" ? "light-content" : "dark-content"}`}
+      />
+      <Stack.Navigator initialRouteName="Login">
         {user ? (
           <Stack.Screen
             name="SignedInLayout"
@@ -74,5 +85,4 @@ const Navigation = () => {
     </NavigationContainer>
   );
 };
-
 export default Navigation;
