@@ -15,38 +15,24 @@ const Stack = createNativeStackNavigator();
 
 const SignedInLayout = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Chat"
-        component={Chat}
-        options={{
-          headerShown: false,
-        }}
-      />
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Chat" component={Chat} />
     </Stack.Navigator>
   );
 };
 
 const SignedOutLayout = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
 };
@@ -67,19 +53,14 @@ const Navigation = () => {
         backgroundColor={`${colorScheme == "dark" ? "#171717" : "white"}`}
         barStyle={`${colorScheme == "dark" ? "light-content" : "dark-content"}`}
       />
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{ headerShown: false }}
+      >
         {user ? (
-          <Stack.Screen
-            name="SignedInLayout"
-            component={SignedInLayout}
-            options={{ headerShown: false }}
-          />
+          <Stack.Screen name="SignedInLayout" component={SignedInLayout} />
         ) : (
-          <Stack.Screen
-            name="SignedOutLayout"
-            component={SignedOutLayout}
-            options={{ headerShown: false }}
-          />
+          <Stack.Screen name="SignedOutLayout" component={SignedOutLayout} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
