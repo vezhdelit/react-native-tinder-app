@@ -1,7 +1,6 @@
 import { View, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useLayoutEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { FIREBASE_AUTH, FIRESTORE_DB } from "../../firebaseConfig";
 import { doc, onSnapshot } from "firebase/firestore";
 

@@ -5,12 +5,12 @@ import CardDeck from "../components/CardDeck";
 import PassButton from "../components/ui/button/PassButton";
 import SmashButton from "../components/ui/button/SmashButton";
 
-const Home = () => {
+const Home = ({ navigation }: any) => {
   const swipeRef = useRef<any | null>(null);
 
   return (
     <SafeAreaView className="flex-1">
-      <Header />
+      <Header navigation={navigation} />
       <CardDeck swipeRef={swipeRef} />
 
       <View className="flex-1 flex-row items-center justify-evenly">
