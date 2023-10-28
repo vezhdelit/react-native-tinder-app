@@ -10,9 +10,9 @@ import GoogleSignIn from "../components/ui/button/GoogleSignInButton";
 import CustomButton from "../components/ui/button/CustomButton";
 import CustomInput from "../components/ui/input/CustomInput";
 
-const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = ({ navigation }: any) => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [isLoadingSubmit, setIsLoadingSubmit] = useState<Boolean>(false);
   const [isLoadingAuth, setIsLoadingAuth] = useState<Boolean>(true);
   const [user, setUser] = useState<User | null>(null);
@@ -63,14 +63,14 @@ const Login = ({ navigation }) => {
         <View>
           <CustomInput
             value={email}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text: string) => setEmail(text)}
             placeholderText="Email.."
           />
         </View>
         <View>
           <CustomInput
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text: string) => setPassword(text)}
             placeholderText="Password.."
             isSecureTextEntry
             isShowToggle

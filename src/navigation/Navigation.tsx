@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { useColorScheme } from "nativewind";
 
 import { StatusBar } from "react-native";
@@ -10,8 +11,9 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import SignUp from "../screens/SignUp";
 import Chat from "../screens/Chat";
+import Modal from "../screens/Modal";
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const SignedInLayout = () => {
   return (
@@ -19,8 +21,18 @@ const SignedInLayout = () => {
       initialRouteName="Home"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Group>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Chat" component={Chat} />
+      </Stack.Group>
+
+      <Stack.Group
+        screenOptions={{
+          presentation: "modal",
+        }}
+      >
+        <Stack.Screen name="Modal" component={Modal} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };
