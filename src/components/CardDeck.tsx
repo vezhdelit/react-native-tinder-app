@@ -13,6 +13,8 @@ import {
   snapshotEqual,
   where,
 } from "firebase/firestore";
+import UserCard from "./ui/card/UserCard";
+import PlaceholderCard from "./ui/card/PlaceholderCard";
 
 interface Profile {
   id: string;
@@ -145,42 +147,7 @@ const CardDeck = ({ swipeRef }: any) => {
           },
         }}
         renderCard={(card) =>
-          card ? (
-            <View
-              key={card.id}
-              style={styles.cardShadow}
-              className="relative h-3/4 items-center justify-center rounded-xl bg-white"
-            >
-              <Image
-                className="h-full w-full rounded-xl"
-                source={{ uri: card.photoURL }}
-              />
-              <View className="absolute bottom-0 flex w-full flex-row items-center justify-between rounded-b-xl bg-white p-6 pb-10">
-                <View className="flex flex-col">
-                  <Text className="text-xl font-bold">{card.displayName}</Text>
-                  <Text>{card.job}</Text>
-                </View>
-                <Text className="text-xl font-bold">{card.age}</Text>
-              </View>
-            </View>
-          ) : (
-            <View
-              style={styles.cardShadow}
-              className="relative h-3/4 items-center justify-center space-y-4 rounded-xl bg-white"
-            >
-              <Image
-                resizeMode="contain"
-                className="h-20 w-full"
-                source={{ uri: "https://links.papareact.com/6gb" }}
-              />
-              <View className=" items-center">
-                <Text className="text-2xl font-medium">
-                  No more bitches for you
-                </Text>
-                <Text className="text-xl">Try again later</Text>
-              </View>
-            </View>
-          )
+          card ? <UserCard card={card} /> : <PlaceholderCard />
         }
       />
     </View>
