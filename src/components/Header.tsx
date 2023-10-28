@@ -5,9 +5,8 @@ import { useNavigation } from "@react-navigation/native";
 import { FIREBASE_AUTH, FIRESTORE_DB } from "../../firebaseConfig";
 import { doc, onSnapshot } from "firebase/firestore";
 
-const Header = () => {
+const Header = ({ navigation }: any) => {
   const user = FIREBASE_AUTH.currentUser;
-  const navigation = useNavigation();
 
   useLayoutEffect(
     () =>
