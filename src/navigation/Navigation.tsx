@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useColorScheme } from "nativewind";
 
 import { StatusBar } from "react-native";
@@ -12,8 +12,9 @@ import { FIREBASE_AUTH } from "../../firebaseConfig";
 import SignUp from "../screens/SignUp";
 import Chat from "../screens/Chat";
 import Modal from "../screens/Modal";
+import Match from "../screens/Match";
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const SignedInLayout = () => {
   return (
@@ -29,9 +30,19 @@ const SignedInLayout = () => {
       <Stack.Group
         screenOptions={{
           presentation: "modal",
+          animation: "fade_from_bottom",
         }}
       >
         <Stack.Screen name="Modal" component={Modal} />
+      </Stack.Group>
+
+      <Stack.Group
+        screenOptions={{
+          presentation: "transparentModal",
+          animation: "fade",
+        }}
+      >
+        <Stack.Screen name="Match" component={Match} />
       </Stack.Group>
     </Stack.Navigator>
   );

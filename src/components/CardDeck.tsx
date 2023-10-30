@@ -5,16 +5,17 @@ import Swiper from "react-native-deck-swiper";
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   onSnapshot,
   query,
   serverTimestamp,
   setDoc,
-  snapshotEqual,
   where,
 } from "firebase/firestore";
 import UserCard from "./ui/card/UserCard";
 import PlaceholderCard from "./ui/card/PlaceholderCard";
+import { generateId } from "../../utils";
 
 interface Profile {
   id: string;
@@ -24,7 +25,7 @@ interface Profile {
   age?: number;
 }
 
-const CardDeck = ({ swipeRef }: any) => {
+const CardDeck = ({ navigation, swipeRef }: any) => {
   const user = FIREBASE_AUTH.currentUser;
   const [profiles, setProfiles] = useState<Profile[]>([]);
 
@@ -71,7 +72,7 @@ const CardDeck = ({ swipeRef }: any) => {
     const userSwiped = profiles[cardIndex];
 
     setDoc(
-      doc(FIRESTORE_DB, "users", user?.uid || "Error", "passes", userSwiped.id),
+      doc(FIRESTORE_DB, "users", user?.uid || "", "passes", userSwiped.id),
       userSwiped
     );
   };
@@ -79,17 +80,42 @@ const CardDeck = ({ swipeRef }: any) => {
   const swipeRight = async (cardIndex: number) => {
     if (!profiles[cardIndex]) return;
     const userSwiped = profiles[cardIndex];
+    const loggedInUser = await (
+      await getDoc(doc(FIRESTORE_DB, "users", user?.uid || ""))
+    ).data();
 
-    setDoc(
-      doc(
-        FIRESTORE_DB,
-        "users",
-        user?.uid || "Error",
-        "matches",
-        userSwiped.id
-      ),
-      userSwiped
-    );
+    getDoc(
+      doc(FIRESTORE_DB, "users", userSwiped.id, "matches", user?.uid || "")
+    ).then((docSnapshot) => {
+      if (docSnapshot.exists()) {
+        //user has matched with you before you matched them
+        setDoc(
+          doc(FIRESTORE_DB, "users", user?.uid || "", "matches", userSwiped.id),
+          userSwiped
+        );
+
+        //Create a MATCH!
+        setDoc(
+          doc(FIRESTORE_DB, "matches", generateId(user?.uid, userSwiped.id)),
+          {
+            users: {
+              [user?.uid || ""]: loggedInUser,
+              [userSwiped.id]: userSwiped,
+            },
+            usersMathced: [user?.uid, userSwiped.id],
+            createdAt: serverTimestamp(),
+          }
+        );
+
+        navigation.navigate("Match", { loggedInUser, userSwiped });
+      } else {
+        //user has wiped first or didnt get swiped on..
+        setDoc(
+          doc(FIRESTORE_DB, "users", user?.uid || "", "matches", userSwiped.id),
+          userSwiped
+        );
+      }
+    });
   };
 
   return (
@@ -155,16 +181,3 @@ const CardDeck = ({ swipeRef }: any) => {
 };
 
 export default CardDeck;
-
-const styles = StyleSheet.create({
-  cardShadow: {
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
-  },
-});

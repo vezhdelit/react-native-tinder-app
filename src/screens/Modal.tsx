@@ -20,7 +20,7 @@ const Modal = ({ navigation }: any) => {
   const handleUpdateUser = async () => {
     console.log(user?.uid);
     try {
-      const dbRef = doc(FIRESTORE_DB, "users", user?.uid || "Error");
+      const dbRef = doc(FIRESTORE_DB, "users", user?.uid || "");
 
       const res = await setDoc(dbRef, {
         id: user?.uid,

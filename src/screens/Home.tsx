@@ -11,7 +11,7 @@ const Home = ({ navigation }: any) => {
   return (
     <SafeAreaView className="flex-1">
       <Header navigation={navigation} />
-      <CardDeck swipeRef={swipeRef} />
+      <CardDeck navigation={navigation} swipeRef={swipeRef} />
 
       <View className="flex-1 flex-row items-center justify-evenly">
         <PassButton onPress={() => swipeRef.current?.swipeLeft()} />
