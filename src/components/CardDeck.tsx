@@ -16,6 +16,7 @@ import {
 import UserCard from "./ui/card/UserCard";
 import PlaceholderCard from "./ui/card/PlaceholderCard";
 import { generateId } from "../../utils";
+import { useNavigation } from "@react-navigation/native";
 
 interface Profile {
   id: string;
@@ -25,7 +26,9 @@ interface Profile {
   age?: number;
 }
 
-const CardDeck = ({ navigation, swipeRef }: any) => {
+const CardDeck = ({ swipeRef }: any) => {
+  const navigation = useNavigation<any>();
+
   const user = FIREBASE_AUTH.currentUser;
   const [profiles, setProfiles] = useState<Profile[]>([]);
 
@@ -102,7 +105,7 @@ const CardDeck = ({ navigation, swipeRef }: any) => {
               [user?.uid || ""]: loggedInUser,
               [userSwiped.id]: userSwiped,
             },
-            usersMathced: [user?.uid, userSwiped.id],
+            usersMatched: [user?.uid, userSwiped.id],
             createdAt: serverTimestamp(),
           }
         );

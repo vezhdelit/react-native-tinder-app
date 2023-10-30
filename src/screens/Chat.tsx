@@ -1,10 +1,13 @@
 import { View, Text } from "react-native";
 import React from "react";
+import ChatHeader from "../components/ChatHeader";
+import ChatList from "../components/ChatList";
 
 const Chat = () => {
   return (
     <View>
-      <Text>Chat</Text>
+      <ChatHeader title="Chats" favouriteEnabled />
+      <ChatList />
     </View>
   );
 };

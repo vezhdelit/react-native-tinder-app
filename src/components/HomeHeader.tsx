@@ -3,20 +3,20 @@ import { Ionicons } from "@expo/vector-icons";
 import { useLayoutEffect } from "react";
 import { FIREBASE_AUTH, FIRESTORE_DB } from "../../firebaseConfig";
 import { doc, onSnapshot } from "firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ navigation }: any) => {
+const Header = () => {
+  const navigation = useNavigation<any>();
+
   const user = FIREBASE_AUTH.currentUser;
 
   useLayoutEffect(
     () =>
-      onSnapshot(
-        doc(FIRESTORE_DB, "users", user?.uid || "Error"),
-        (snapshot) => {
-          if (!snapshot.exists()) {
-            navigation.navigate("Modal");
-          }
+      onSnapshot(doc(FIRESTORE_DB, "users", user?.uid || ""), (snapshot) => {
+        if (!snapshot.exists()) {
+          navigation.navigate("Modal");
         }
-      ),
+      }),
     []
   );
 

@@ -1,17 +1,17 @@
 import { View, SafeAreaView } from "react-native";
 import { useRef } from "react";
-import Header from "../components/Header";
+import Header from "../components/HomeHeader";
 import CardDeck from "../components/CardDeck";
 import PassButton from "../components/ui/button/PassButton";
 import SmashButton from "../components/ui/button/SmashButton";
 
-const Home = ({ navigation }: any) => {
+const Home = () => {
   const swipeRef = useRef<any | null>(null);
 
   return (
     <SafeAreaView className="flex-1">
-      <Header navigation={navigation} />
-      <CardDeck navigation={navigation} swipeRef={swipeRef} />
+      <Header />
+      <CardDeck swipeRef={swipeRef} />
 
       <View className="flex-1 flex-row items-center justify-evenly">
         <PassButton onPress={() => swipeRef.current?.swipeLeft()} />
