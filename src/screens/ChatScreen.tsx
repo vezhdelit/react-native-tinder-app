@@ -6,7 +6,7 @@ import ChatList from "../components/ChatList";
 const ChatScreen = () => {
   return (
     <View>
-      <ChatHeader title="Chats" favouriteEnabled />
+      <ChatHeader title="Chats" />
       <ChatList />
     </View>
   );

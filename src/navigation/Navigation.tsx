@@ -15,6 +15,7 @@ import MatchPopUp from "../screens/MatchPopUp";
 
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import MessagesScreen from "../screens/MessagesScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const SignedInLayout = () => {
       <Stack.Group>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Chat" component={ChatScreen} />
+        <Stack.Screen name="Messages" component={MessagesScreen} />
       </Stack.Group>
 
       <Stack.Group

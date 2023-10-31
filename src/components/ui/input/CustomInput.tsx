@@ -10,6 +10,10 @@ interface CustomInputProps {
   textClassname?: string; // Tailwind classname styling for text within the input
   isSecureTextEntry?: boolean;
   isShowToggle?: boolean;
+
+  enableSendButtonIcon?: boolean;
+  isSendButtonDisabled?: boolean;
+  onPressSend?: any;
 }
 
 const CustomInput = ({
@@ -20,8 +24,13 @@ const CustomInput = ({
   placeholderText,
   isSecureTextEntry,
   isShowToggle,
+
+  enableSendButtonIcon,
+  isSendButtonDisabled,
+  onPressSend,
 }: CustomInputProps) => {
   const [isPasswordHidden, setIsPasswordHidden] = useState<boolean>(true);
+  const [inputValue, setInputValue] = useState<string>("");
 
   return (
     <View
@@ -43,6 +52,15 @@ const CustomInput = ({
             name={isPasswordHidden ? "ios-eye-off" : "ios-eye"}
             size={24}
             color="gray"
+          />
+        </TouchableOpacity>
+      )}
+      {enableSendButtonIcon && (
+        <TouchableOpacity disabled={isSendButtonDisabled} onPress={onPressSend}>
+          <Ionicons
+            name="send"
+            size={24}
+            color={isSendButtonDisabled ? "gray" : "#FF5864"}
           />
         </TouchableOpacity>
       )}
