@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useColorScheme } from "nativewind";
 
 import { StatusBar } from "react-native";
-import Home from "../screens/Home";
-import Login from "../screens/Login";
+
 import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
-import SignUp from "../screens/SignUp";
-import Chat from "../screens/Chat";
-import Modal from "../screens/Modal";
-import Match from "../screens/Match";
+
+import HomeScreen from "../screens/HomeScreen";
+import ChatScreen from "../screens/ChatScreen";
+import EditProfileScreen from "../screens/EditProfileScreen";
+import MatchPopUp from "../screens/MatchPopUp";
+
+import LoginScreen from "../screens/LoginScreen";
+import SignUpScreen from "../screens/SignUpScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,8 +25,8 @@ const SignedInLayout = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Group>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Chat" component={Chat} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
       </Stack.Group>
 
       <Stack.Group
@@ -33,7 +35,7 @@ const SignedInLayout = () => {
           animation: "fade_from_bottom",
         }}
       >
-        <Stack.Screen name="Modal" component={Modal} />
+        <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       </Stack.Group>
 
       <Stack.Group
@@ -42,7 +44,7 @@ const SignedInLayout = () => {
           animation: "fade",
         }}
       >
-        <Stack.Screen name="Match" component={Match} />
+        <Stack.Screen name="Match" component={MatchPopUp} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -54,8 +56,8 @@ const SignedOutLayout = () => {
       initialRouteName="Login"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="SignUp" component={SignUpScreen} />
     </Stack.Navigator>
   );
 };

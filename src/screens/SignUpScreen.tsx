@@ -6,7 +6,7 @@ import GoogleSignIn from "../components/ui/button/GoogleSignInButton";
 import CustomInput from "../components/ui/input/CustomInput";
 import CustomButton from "../components/ui/button/CustomButton";
 
-const SignUp = ({ navigation }) => {
+const SignUpScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoadingSubmit, setIsLoadingSubmit] = useState<Boolean>(false);
@@ -42,14 +42,14 @@ const SignUp = ({ navigation }) => {
         <View>
           <CustomInput
             value={email}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text: any) => setEmail(text)}
             placeholderText="Email.."
           />
         </View>
         <View>
           <CustomInput
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text: any) => setPassword(text)}
             placeholderText="Password.."
             isSecureTextEntry
             isShowToggle
@@ -77,4 +77,4 @@ const SignUp = ({ navigation }) => {
   );
 };
 
-export default SignUp;
+export default SignUpScreen;

@@ -10,7 +10,7 @@ import GoogleSignIn from "../components/ui/button/GoogleSignInButton";
 import CustomButton from "../components/ui/button/CustomButton";
 import CustomInput from "../components/ui/input/CustomInput";
 
-const Login = ({ navigation }: any) => {
+const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLoadingSubmit, setIsLoadingSubmit] = useState<Boolean>(false);
@@ -98,4 +98,4 @@ const Login = ({ navigation }: any) => {
   );
 };
 
-export default Login;
+export default LoginScreen;

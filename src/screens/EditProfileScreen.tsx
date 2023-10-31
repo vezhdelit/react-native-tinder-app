@@ -8,7 +8,7 @@ import {
 import CustomButton from "../components/ui/button/CustomButton";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
-const Modal = ({ navigation }: any) => {
+const EditProfileScreen = ({ navigation }: any) => {
   const user = FIREBASE_AUTH.currentUser;
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<string>("");
@@ -107,4 +107,4 @@ const Modal = ({ navigation }: any) => {
   );
 };
 
-export default Modal;
+export default EditProfileScreen;

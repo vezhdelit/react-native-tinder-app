@@ -3,7 +3,7 @@ import React from "react";
 import ChatHeader from "../components/ChatHeader";
 import ChatList from "../components/ChatList";
 
-const Chat = () => {
+const ChatScreen = () => {
   return (
     <View>
       <ChatHeader title="Chats" favouriteEnabled />
@@ -12,4 +12,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default ChatScreen;

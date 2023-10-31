@@ -14,7 +14,7 @@ const Header = () => {
     () =>
       onSnapshot(doc(FIRESTORE_DB, "users", user?.uid || ""), (snapshot) => {
         if (!snapshot.exists()) {
-          navigation.navigate("Modal");
+          navigation.navigate("EditProfile");
         }
       }),
     []

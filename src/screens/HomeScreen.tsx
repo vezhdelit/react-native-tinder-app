@@ -5,7 +5,7 @@ import CardDeck from "../components/CardDeck";
 import PassButton from "../components/ui/button/PassButton";
 import SmashButton from "../components/ui/button/SmashButton";
 
-const Home = () => {
+const HomeScreen = () => {
   const swipeRef = useRef<any | null>(null);
 
   return (
@@ -21,4 +21,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeScreen;

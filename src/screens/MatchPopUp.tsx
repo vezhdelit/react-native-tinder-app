@@ -2,7 +2,7 @@ import { View, Image, Text } from "react-native";
 import React from "react";
 import CustomButton from "../components/ui/button/CustomButton";
 
-const Match = ({ navigation, route }: any) => {
+const MatchPopUp = ({ navigation, route }: any) => {
   const { loggedInUser, userSwiped } = route.params;
 
   return (
@@ -41,4 +41,4 @@ const Match = ({ navigation, route }: any) => {
   );
 };
 
-export default Match;
+export default MatchPopUp;
