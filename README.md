@@ -5,7 +5,7 @@
 
 
 ![image](https://github.com/vezhdelit/react-native-tinder-app/assets/57722783/c96f0de4-e51a-4021-bc3a-9404d3883f00)
-
+![image](https://github.com/vezhdelit/react-native-tinder-app/assets/57722783/508b8895-b647-4ddd-8841-1f6e994cffb9)
 ![image](https://github.com/vezhdelit/react-native-tinder-app/assets/57722783/3f272470-ee9c-426b-b1e6-919835afaf61)
 
 ![image](https://github.com/vezhdelit/react-native-tinder-app/assets/57722783/8e6190e0-f861-4899-8c23-4e6a29a16b09)
