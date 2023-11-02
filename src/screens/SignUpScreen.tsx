@@ -30,11 +30,11 @@ const SignUpScreen = ({ navigation }: any) => {
     }
   };
   return (
-    <View className="flex-1 items-center justify-center gap-4 p-8 pb-20 dark:bg-neutral-900">
-      <Text className=" text-center text-2xl font-bold dark:text-white">
+    <View className="flex-1 items-center justify-center gap-4 p-8 pb-20">
+      <Text className=" text-center text-2xl font-bold ">
         Create your account!
       </Text>
-      <View className="w-full">
+      <View className="w-full pt-10">
         <GoogleSignIn FIREBASE_AUTH={FIREBASE_AUTH} />
       </View>
       <Text className=" text-base text-gray-500"> or</Text>

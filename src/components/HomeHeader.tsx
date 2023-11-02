@@ -44,7 +44,7 @@ const Header = () => {
 
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Modal");
+          navigation.navigate("EditProfile");
         }}
       >
         <Image

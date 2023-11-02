@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, Image } from "react-native";
 import { useEffect, useState } from "react";
 import { FIREBASE_AUTH } from "../../firebaseConfig";
 import {
@@ -44,18 +44,20 @@ const LoginScreen = ({ navigation }: any) => {
 
   if (isLoadingAuth) {
     return (
-      <View className="flex-1 items-center justify-center dark:bg-neutral-900">
+      <View className="flex-1 items-center justify-center">
         <ActivityIndicator size="large" />
       </View>
     );
   }
   return (
-    <View className="flex-1 items-center justify-center space-y-4 p-8 pb-20 dark:bg-neutral-900">
-      <Text className=" text-center text-2xl font-bold dark:text-white">
-        Welcome to the TinderApp
-      </Text>
+    <View className="flex-1 items-center justify-center space-y-4 p-8 pb-20">
+      <Image
+        className="h-20 w-full"
+        resizeMode="contain"
+        source={{ uri: "https://links.papareact.com/2pf" }}
+      />
 
-      <View className="w-full">
+      <View className="w-full pt-10">
         <GoogleSignIn FIREBASE_AUTH={FIREBASE_AUTH} />
       </View>
       <Text className=" text-base text-gray-500"> or</Text>
